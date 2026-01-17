@@ -25,6 +25,7 @@ public class TestAIController {
         String response  = client.prompt(query).call().content();
         log.info(response);
         return response;
+        
 
     }
 }
