@@ -1,8 +1,12 @@
 package com.LearningHub.SpringAlBot.controller;
 
+import com.LearningHub.SpringAlBot.dto.LanguageOutput;
+import com.LearningHub.SpringAlBot.service.TestAiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,18 +18,16 @@ public class TestAIController {
 
     Logger log = LoggerFactory.getLogger(TestAIController.class);
 
-    private final ChatClient client;
 
-    public TestAIController(ChatClient.Builder builder) {
-        this.client = builder.build();
+    private  TestAiService testAiService;
+
+    public TestAIController(TestAiService testAiService) {
+        this.testAiService = testAiService;
     }
 
     @GetMapping("/test")
-    public String testAiModel(@RequestParam String query) {
-        String response  = client.prompt(query).call().content();
-        log.info(response);
-        return response;
-        
-
+    public ResponseEntity<LanguageOutput> testAiModel(@RequestParam String query) {
+        LanguageOutput response = testAiService.testAiModel(query);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
