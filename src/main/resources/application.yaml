@@ -2,12 +2,25 @@ spring:
   application:
     name: SpringAlBot
 
+#  ai:
+#    ollama:
+#      base-url: http://localhost:11434
+#      chat:
+#        options:
+#          model: qwen2.5:7b
+#          temperature: 0.2
+
+
   ai:
-    ollama:
-      base-url: http://localhost:11434
-      chat:
-        options:
-          model: qwen2.5:7b
-          temperature: 0.2
+    google:
+      genai:
+        api-key: ${API_KEY}
+        chat:
+          options:
+            model: ${MODEL_NAME}
+            temperature: ${TEMPERATURE}
+
+
+
 server:
   port: 8080
