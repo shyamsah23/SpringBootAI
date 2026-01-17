@@ -1,6 +1,6 @@
 package com.LearningHub.SpringAlBot.dto;
 
-public class LanguageOutput {
+public class GenericOutput {
     private String name;
     private String description;
     private String foundedYear;
@@ -29,10 +29,10 @@ public class LanguageOutput {
         this.foundedYear = foundedYear;
     }
 
-    public LanguageOutput() {
+    public GenericOutput() {
     }
 
-    public LanguageOutput(String name, String description, String foundedYear) {
+    public GenericOutput(String name, String description, String foundedYear) {
         this.name = name;
         this.description = description;
         this.foundedYear = foundedYear;
