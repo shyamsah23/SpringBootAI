@@ -16,13 +16,14 @@ spring:
           api-key: ${API_KEY}
           text:
             options:
-              model: text-embedding-004
+              model: gemini-embedding-001
 
     vectorstore:
       pinecone:
         api-key: ${PINECONE_API_KEY}
         host: ${PINECONE_HOST}
-        index-name: spring-ai-learning-gemini
+        index-name: spring-ai-learning-gemini-3072
+
 
 server:
   port: 8080
