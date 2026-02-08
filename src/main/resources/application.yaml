@@ -2,25 +2,27 @@ spring:
   application:
     name: SpringAlBot
 
-#  ai:
-#    ollama:
-#      base-url: http://localhost:11434
-#      chat:
-#        options:
-#          model: qwen2.5:7b
-#          temperature: 0.2
-
-
   ai:
     google:
       genai:
         api-key: ${API_KEY}
+
         chat:
           options:
-            model: ${MODEL_NAME}
-            temperature: ${TEMPERATURE}
+            model: ${MODEL_NAME:gemini-1.5-pro}
+            temperature: ${TEMPERATURE:0.3}
 
+        embedding:
+          api-key: ${API_KEY}
+          text:
+            options:
+              model: text-embedding-004
 
+    vectorstore:
+      pinecone:
+        api-key: ${PINECONE_API_KEY}
+        host: ${PINECONE_HOST}
+        index-name: spring-ai-learning-gemini
 
 server:
   port: 8080
